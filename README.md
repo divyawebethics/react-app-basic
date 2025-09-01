@@ -60,9 +60,9 @@ GRANT ALL PRIVILEGES ON DATABASE person TO your_app_user;
 
 ### 5. Nginx Server Setup
 Install Nginx, which will serve as the reverse proxy.
-
+`
 sudo apt update
-sudo apt install nginx
+sudo apt install nginx```
 
 Once installed, copy the configuration file from your nginx/ directory into /etc/nginx/sites-available/ and create a symbolic link to enable it.
 
