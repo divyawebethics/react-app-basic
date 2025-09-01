@@ -1,30 +1,30 @@
-#react-app-basic
+# react-app-basic
 This repository contains the code for a full-stack web application, featuring a React front end, a FastAPI back end, and an Nginx reverse proxy for production deployment.
 
-##Project Overview
+## Project Overview
 backend/: A RESTful API built with Python's FastAPI framework. This handles all data processing and database interactions.
 
 frontend/: The user interface built with React and Vite. This application communicates with the back-end API to retrieve and display data.
 
 nginx/: Nginx configuration files that act as a reverse proxy, directing traffic to the appropriate back-end and front-end services.
 
-##Getting Started
+## Getting Started
 Follow these steps to set up and run the project locally.
 
-###1. Clone the Repository
+### 1. Clone the Repository
 Clone the project from GitHub and navigate to the project directory.
 
 git clone https://github.com/divyawebethics/react-app-basic.git
 cd react-app-basic/assignment_1
 
-###2. Frontend Setup
+### 2. Frontend Setup
 Navigate into the frontend directory and install the required dependencies.
 
 cd frontend
 npm install
 npm run dev
 
-###3. Backend Setup
+### 3. Backend Setup
 Navigate into the backend directory, create and activate a Python virtual environment, and install the required libraries.
 
 cd ../backend
@@ -33,7 +33,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 uvicorn main:app --reload
 
-###4. Database Setup (PostgreSQL)
+### 4. Database Setup (PostgreSQL)
 Install PostgreSQL and set up the database and a user for your application.
 
 #### Install PostgreSQL and the client tools
@@ -58,7 +58,7 @@ GRANT ALL PRIVILEGES ON DATABASE person TO your_app_user;
 #### Exit the psql shell
 \q
 
-###5. Nginx Server Setup
+### 5. Nginx Server Setup
 Install Nginx, which will serve as the reverse proxy.
 
 sudo apt update
