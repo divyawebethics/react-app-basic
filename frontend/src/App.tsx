@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthContainer } from './components/AuthContainer';
 import { ProfileContainer } from './components/ProfileContainer';
 import { useAuth } from './hooks/useAuth';
 
 export const App: React.FC = () => {
-  const { user, checkAuth, logout } = useAuth();
+  const { user, logout } = useAuth();
 
-  useEffect(() => {
-    checkAuth();
-  }, [checkAuth]);
+  // useEffect(() => {
+  //   checkAuth();
+  // }, [checkAuth]);
 
   const handleLogout = () => {
     logout();
@@ -26,14 +26,17 @@ export const App: React.FC = () => {
         <Route 
           path="/login" 
           element={
-            user ? (
-              <Navigate to="/profile" replace />
-            ) : (
-              <AuthContainer 
+
+            <AuthContainer 
                 isLoginMode={true}
-                onSwitchToProfile={() => window.location.href = '/profile'}
               />
-            )
+            // user ? (
+            //   <Navigate to="/profile" replace />
+            // ) : (
+            //   <AuthContainer 
+            //     isLoginMode={true}
+            //   />
+            // )
           } 
         />
         
@@ -44,8 +47,7 @@ export const App: React.FC = () => {
               <Navigate to="/profile" replace />
             ) : (
               <AuthContainer 
-                isLoginMode={true}
-                onSwitchToProfile={() => window.location.href = '/profile'}
+                isLoginMode={false}
               />
             )
           } 
@@ -54,11 +56,13 @@ export const App: React.FC = () => {
         <Route 
           path="/profile" 
           element={
-            user ? (
-              <ProfileContainer onLogout={handleLogout} />
-            ) : (
-              <Navigate to="/login" replace />
-            )
+                          <ProfileContainer onLogout={handleLogout} />
+
+            // user ? (
+            //   <ProfileContainer onLogout={handleLogout} />
+            // ) : (
+            //   <Navigate to="/login" replace />
+            // )
           } 
         />
         

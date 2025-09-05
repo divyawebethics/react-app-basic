@@ -23,6 +23,7 @@ const FormInput: React.FC<{
   />
 );
 
+
 export const Profile: FC<ProfileProps> = ({
   user,
   formData,

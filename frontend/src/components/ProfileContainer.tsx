@@ -21,13 +21,16 @@ export const ProfileContainer: React.FC<ProfileContainerProps> = ({ onLogout }) 
   const onProfileUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-    if (!token || !user) return;
+    // console.log(token)
+    // console.log(user)
+    if (!token || !user) {
+      // console.log(user)
+      return;}
 
     try {
       const form = new FormData();
       form.append('name', formData.name);
       form.append('email', formData.email);
-
       await profileService.updateProfile(token, form);
       await fetchProfile(token);
       setErrorMessage('Profile updated successfully!');
@@ -48,10 +51,11 @@ export const ProfileContainer: React.FC<ProfileContainerProps> = ({ onLogout }) 
       await fetchProfile(token);
       setErrorMessage('Avatar updated successfully!');
     } catch (error: any) {
+      console.log(error.message)
       setErrorMessage(error.message);
     }
   };
-
+  console.log(user)
   if (!user) return null;
 
   return (

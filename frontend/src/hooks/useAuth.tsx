@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import type { User } from './../models/ProfileModels'
 
@@ -51,8 +51,11 @@ export const useAuth = () => {
       }
 
       localStorage.setItem('token', data.access_token);
+
       await fetchProfile(data.access_token);
-      // return true;
+
+      return data
+
     } catch (error) {
       setErrorMessage('Could not connect to the server.');
       return false;
@@ -106,6 +109,16 @@ export const useAuth = () => {
       await fetchProfile(token);
     }
   };
+
+
+  useEffect(()=>{
+        const token = localStorage.getItem('token');  
+        if (token){
+            fetchProfile(token);
+
+        }
+  },[])
+
 
   return {
     user,

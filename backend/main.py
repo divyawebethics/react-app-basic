@@ -95,6 +95,7 @@ async def update_profile(
     current_user: models.User = Depends(get_current_user),
     db: SQLAlchemySession = Depends(get_db)
 ):
+    
     user = current_user
     user.name = name
     user.email = email
